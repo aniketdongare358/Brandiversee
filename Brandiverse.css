@@ -1,0 +1,691 @@
+/* =========================================================
+   GLOBAL RESET & FONTS SYSTEM
+========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+html, body, * {
+  cursor: none !important; /* Conceals standard operating system pointers */
+}
+
+body {
+  background: #1f1f1f;
+  color: #eae7df;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   INTERACTIVE LIQUID RUNTIME CURSOR
+========================================================= */
+.custom-cursor {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: difference;
+  left: 0;
+  top: 0;
+  will-change: transform;
+}
+
+/* =========================================================
+   GLOBAL HEADER (NAVBAR)
+========================================================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 60px;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.star {
+  font-size: 28px;
+  color: #ff6a00;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+nav a {
+  margin-left: 40px;
+  text-decoration: none;
+  color: #eae7df;
+  font-size: 14px;
+  letter-spacing: 1px;
+  position: relative;
+  transition: 0.3s;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #ff6a00;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ff6a00;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* =========================================================
+   HERO INTRO CONTAINER
+========================================================= */
+.hero {
+  text-align: center;
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 120px;
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -6px;
+}
+
+.hero span {
+  color: #ff6a00;
+}
+
+.hero p {
+  margin-top: 40px;
+  color: #bfbfbf;
+  font-size: 15px;
+  letter-spacing: 1px;
+  max-width: 600px;
+}
+
+.buttons {
+  margin-top: 40px;
+}
+
+.btn {
+  padding: 18px 40px;
+  margin: 10px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+}
+
+.primary {
+  background: #eae7df;
+  color: #1f1f1f;
+}
+
+.primary:hover {
+  background: #ff6a00;
+  color: #fff;
+}
+
+.secondary {
+  border: 2px solid #eae7df;
+  color: #eae7df;
+}
+
+.secondary:hover {
+  background: #ff6a00;
+  border-color: #ff6a00;
+  color: #fff;
+}
+
+/* =========================================================
+   HERO SHOWCASE IMAGE-BOX SLIDER
+========================================================= */
+.showcase {
+  background: #e7e2d6;
+  color: #1f1f1f;
+  text-align: center;
+  padding: 140px 20px;
+}
+
+.showcase h2 {
+  font-size: 100px;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -5px;
+  margin-bottom: 60px;
+}
+
+.image-box {
+  width: 100%; 
+  max-width: 1200px; 
+  aspect-ratio: 16 / 9;
+  margin: 0 auto; 
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  background-color: #000; 
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center; 
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 0.8s ease-in-out, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* IMAGE-BOX ZOOM INTERACTION */
+.image-box:hover .slide.active {
+  transform: scale(1.05);
+  filter: brightness(0.9);
+}
+
+.slider-lines {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  z-index: 10;
+}
+
+.slider-lines span {
+  width: 60px;
+  height: 4px;
+  background: white;
+  opacity: 0.7;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.slider-lines span:hover {
+  opacity: 1;
+  transform: scaleX(1.2);
+}
+
+.sub-text {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin: 50px 0 40px;
+}
+
+.bottom-text {
+  font-size: 15px;
+  color: #555;
+  letter-spacing: 1px;
+  border-top: 1px solid #cfc8bb;
+  padding-top: 40px;
+}
+
+.partner-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;      
+  margin: 90px 0; 
+  flex-wrap: wrap; 
+}
+
+.partner-logos img {
+  height: 40px;    
+  width: auto;     
+  filter: grayscale(100%); 
+  transition: 0.3s;
+}
+
+/* =========================================================
+   SERVICES CORE LAYOUT
+========================================================= */
+.services {
+  background: #1f1f1f; 
+  padding: 140px 60px;
+  text-align: center;
+}
+
+.services-title {
+  color: #fff;
+  font-size: 100px;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -5px;
+  margin-bottom: 80px;
+}
+
+.services-title span {
+  color: #ff6a00;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 18px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: #eae7df; 
+  padding: 45px 35px;
+  border-radius: 20px; 
+  text-align: left;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+}
+
+/* Specific Hover Logic */
+.services-grid .service-card.reveal-element.active:hover {
+  transform: translateY(-12px);
+  background: #ff6a00;
+}
+
+.services-grid .service-card.reveal-element.active:hover h3,
+.services-grid .service-card.reveal-element.active:hover p {
+  color: #ffffff;
+}
+
+.icon-placeholder {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 40px;
+}
+
+.orange-block {
+  background: #ff6a00; 
+}
+
+.service-card h3 {
+  color: #1f1f1f;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  transition: color 0.3s;
+}
+
+.service-card p {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
+}
+
+/* =========================================================
+   THE STUDIO STRATEGIC FRAMEWORK
+========================================================= */
+.framework {
+  background: #eae7df; 
+  padding: 140px 60px;
+  text-align: center;
+}
+
+.framework-title {
+  color: #1f1f1f;
+  font-size: 100px; 
+  font-weight: 800;
+  line-height: 0.95;
+  margin-bottom: 80px;
+  letter-spacing: -5px;
+}
+
+.framework-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px; 
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.framework-card {
+  background: #111; 
+  color: #fff;
+  padding: 45px 35px;
+  border-radius: 20px;
+  text-align: left;
+  aspect-ratio: 1 / 1.1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  transition: background 0.4s ease, color 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.framework-grid .framework-card.reveal-element.active:hover {
+  background: #ff6a00; 
+  color: #1a1a1a;
+  transform: translateY(-8px);
+}
+
+.card-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.number {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ff6a00;
+}
+
+.card-title {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.card-desc {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #ddd;
+  letter-spacing: 0.5px;
+  max-width: 95%;
+}
+
+/* =========================================================
+   EDITORIAL WORK SHOWCASE SPLIT LINES
+========================================================= */
+.project-showcase {
+  width: 100%;
+  background: #fff; 
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  min-height: 600px; 
+}
+
+.project-row.reverse .project-text {
+  grid-column: 1;
+  grid-row: 1;
+}
+.project-row.reverse .project-image {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.project-image {
+  background: #111; 
+  overflow: hidden;
+}
+
+/* Link wrapper style definitions within the presentation grids */
+.project-image a,
+.project-text h2 a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1);
+  transition: transform 0.8s ease, filter 0.5s ease;
+  will-change: transform;
+}
+
+/* Maintain zoom behavior with structural link wrappers in place */
+.project-image:hover img {
+  transform: scale(1.05);
+  filter: brightness(0.7);
+}
+
+.project-text {
+  background: #fffef2; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10% 12%; 
+  text-align: left;
+}
+
+.project-text h2 {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.0;
+  color: #1f1f1f;
+  margin-bottom: 30px;
+  letter-spacing: -2px;
+}
+
+.project-text h2 a:hover {
+  color: #ff6a00;
+  transition: color 0.3s ease;
+}
+
+.project-text p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+  letter-spacing: 0.5px;
+  max-width: 450px;
+}
+
+/* =========================================================
+   STUDIO MANIFESTO QUOTE BLOCK
+========================================================= */
+.quote-section {
+  background: #1f1f1f;
+  min-height: 100vh; 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px; 
+}
+
+.quote-container {
+  max-width: 1100px; 
+  text-align: center;
+}
+
+.quote-section blockquote {
+  color: #eae7df;
+  font-size: 100px; 
+  font-weight: 800;
+  line-height: 0.95;
+  margin-bottom: 50px;
+  letter-spacing: -5px;
+}
+
+.quote-section cite {
+  color: #ff6a00;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase; 
+}
+
+/* =========================================================
+   LEAD GENERATION CTA FOOTER INTERFACE
+========================================================= */
+.contact-cta {
+  background: #1f1f1f; 
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  position: relative;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.cta-content h2 {
+  color: #eae7df;
+  font-size: 100px; 
+  font-weight: 800;
+  line-height: 0.95;
+  max-width: 1000px;
+  letter-spacing: -5px;
+  margin-bottom: 50px;
+}
+
+.footer-nav {
+  position: absolute;
+  bottom: 60px; 
+  display: flex;
+  gap: 40px;
+}
+
+.footer-nav a {
+  text-decoration: none;
+  color: #eae7df;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  transition: 0.3s ease;
+  opacity: 0.6;
+}
+
+.footer-nav a:hover {
+  opacity: 1;
+  color: #ff6a00; 
+}
+
+/* =========================================================
+   UNIVERSAL PREMIUM SCROLL REVEAL ENGINE (TRUE INDIVIDUAL WATERFALL)
+========================================================= */
+.reveal-element {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-element.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* AUTOMATIC SEQUENTIAL WATERFALL ENGINE */
+section *:nth-child(1).reveal-element.active { transition-delay: 0.0s; }
+section *:nth-child(2).reveal-element.active { transition-delay: 0.15s; }
+section *:nth-child(3).reveal-element.active { transition-delay: 0.3s; }
+section *:nth-child(4).reveal-element.active { transition-delay: 0.45s; }
+section *:nth-child(5).reveal-element.active { transition-delay: 0.6s; }
+section *:nth-child(6).reveal-element.active { transition-delay: 0.75s; }
+
+/* Sub-grid auto-stagger (For individual Grid Items) */
+.services-grid .service-card:nth-child(1).active  { transition-delay: 0.1s; }
+.services-grid .service-card:nth-child(2).active  { transition-delay: 0.25s; }
+.services-grid .service-card:nth-child(3).active  { transition-delay: 0.4s; }
+.services-grid .service-card:nth-child(4).active  { transition-delay: 0.55s; }
+
+.framework-grid .framework-card:nth-child(1).active { transition-delay: 0.1s; }
+.framework-grid .framework-card:nth-child(2).active { transition-delay: 0.25s; }
+.framework-grid .framework-card:nth-child(3).active { transition-delay: 0.4s; }
+.framework-grid .framework-card:nth-child(4).active { transition-delay: 0.55s; }
+
+/* =========================================================
+   RESPONSIVE MEDIA SYSTEM BREAKPOINTS
+========================================================= */
+@media (max-width: 1400px) {
+  .framework-grid, .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .hero h1, .showcase h2, .services-title, .framework-title, .quote-section blockquote, .contact-cta cta-content h2 {
+    font-size: 80px;
+    letter-spacing: -4px;
+  }
+  
+  .framework-grid, .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .project-row, .project-row.reverse {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  
+  .project-row.reverse .project-text,
+  .project-row.reverse .project-image {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .project-text {
+    padding: 60px 40px;
+  }
+
+  .project-image {
+    height: 400px;
+  }
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    padding: 25px 20px;
+  }
+
+  nav {
+    display: none; /* Matches mobile view logic from work page */
+  }
+
+  .hero h1, .showcase h2, .services-title, .framework-title, .quote-section blockquote, .cta-content h2 {
+    font-size: 52px;
+    letter-spacing: -3px;
+  }
+
+  .framework-grid, .services-grid {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .footer-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    bottom: 40px;
+  }
+}
